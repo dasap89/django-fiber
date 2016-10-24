@@ -101,6 +101,9 @@ class Page(MPTTModel):
     protected = models.BooleanField(_('protected'), default=False)
     content_items = models.ManyToManyField(ContentItem, through='PageContentItem', verbose_name=_('content items'))
     metadata = JSONField(blank=True, null=True, schema=METADATA_PAGE_SCHEMA, prefill_from='fiber.models.Page')
+    old_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
+    current_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
+    best_seller = models.IntegerField(blank=True, null=False, default=0)
 
     image = models.ImageField(_('image'), upload_to=IMAGES_DIR, max_length=255, blank=True, default='')
 
